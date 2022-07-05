@@ -27,10 +27,12 @@
   import "ol/ol.css";
   import { onMounted, reactive } from "vue";
   import { Map, View } from "ol";
-  import { Tile } from "ol/layer";
-  import { BingMaps, Vector } from "ol/source";
+  import { Tile as TileLayer } from "ol/layer";
+  import { Vector } from "ol/source";
   import { Polygon, LineString } from "ol/geom";
   import { unByKey } from "ol/Observable";
+  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import XYZ from "ol/source/XYZ";
   import {
     createHelpTooltip,
     createMeasureTooltip,
@@ -39,6 +41,17 @@
     drawGeometricFigure,
     createVector,
   } from "./index";
+
+  const raster = new TileLayer({
+    source: new XYZ({
+      attributions: ATTRIBUTIONS,
+      url:
+        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
+        MAPKEY,
+      maxZoom: 20,
+    }),
+  });
+
   /**
    *  当用户正在绘制多边形时的提示信息文本
    * @type {string}
@@ -78,12 +91,7 @@
       //地图容器中加载的图层
       layers: [
         //加载瓦片图层数据
-        new Tile({
-          source: new BingMaps({
-            key: "AiZrfxUNMRpOOlCpcMkBPxMUSKOEzqGeJTcVKUrXBsUdQDXutUBFN3-GnMNSlso-",
-            imagerySet: "Aerial",
-          }),
-        }),
+        raster,
       ],
       view: new View({
         projection: "EPSG:4326", // 坐标系，有EPSG:4326和EPSG:3 857

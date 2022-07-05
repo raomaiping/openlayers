@@ -1,15 +1,26 @@
 <template>
-  <div id="map" ref="map"></div>
+  <div id="map"></div>
 </template>
 
 <script setup>
   import "ol/ol.css";
-  import { onMounted, ref } from "vue";
+  import { onMounted } from "vue";
   import { Map, View } from "ol";
   import { defaults, ZoomToExtent } from "ol/control";
-  import { Tile } from "ol/layer";
-  import BingMaps from "ol/source/BingMaps";
-  const map = ref(null);
+  import { Tile as TileLayer } from "ol/layer";
+  import { XYZ } from "ol/source";
+  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+
+  const raster = new TileLayer({
+    source: new XYZ({
+      attributions: ATTRIBUTIONS,
+      url:
+        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
+        MAPKEY,
+      maxZoom: 20,
+    }),
+  });
+
   const initMap = () => {
     new Map({
       //初始化map
@@ -31,12 +42,7 @@
       //地图容器中加载的图层
       layers: [
         //加载瓦片图层数据
-        new Tile({
-          source: new BingMaps({
-            key: "AiZrfxUNMRpOOlCpcMkBPxMUSKOEzqGeJTcVKUrXBsUdQDXutUBFN3-GnMNSlso-",
-            imagerySet: "Aerial",
-          }),
-        }),
+        raster,
       ],
       view: new View({
         projection: "EPSG:4326", // 坐标系，有EPSG:4326和EPSG:3 857

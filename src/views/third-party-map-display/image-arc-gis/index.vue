@@ -8,8 +8,10 @@
   import { Map, View } from "ol";
   import { Tile } from "ol/layer";
   import { XYZ } from "ol/source";
+  import { ATTRIBUTIONS } from "@/constants";
   const arcGISLayers = new Tile({
     source: new XYZ({
+      attributions: ATTRIBUTIONS,
       url:
         "http://server.arcgisonline.com/ArcGIS/rest/services/" +
         "World_Topo_Map/MapServer/tile/{z}/{y}/{x}",

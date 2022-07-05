@@ -13,10 +13,22 @@
   import "ol/ol.css";
   import { onMounted } from "vue";
   import { Map, View } from "ol";
-  import { Tile } from "ol/layer";
-  import BingMaps from "ol/source/BingMaps";
+  import { Tile as TileLayer } from "ol/layer";
   import { fromLonLat } from "ol/proj";
   import { easeIn, easeOut } from "ol/easing";
+  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import XYZ from "ol/source/XYZ";
+
+  const raster = new TileLayer({
+    source: new XYZ({
+      attributions: ATTRIBUTIONS,
+      url:
+        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
+        MAPKEY,
+      maxZoom: 20,
+    }),
+  });
+
   const view = new View({
     //地图初始中心点
     center: [12950000, 4860000],
@@ -30,12 +42,7 @@
       //地图容器中加载的图层
       layers: [
         //加载瓦片图层数据
-        new Tile({
-          source: new BingMaps({
-            key: "AiZrfxUNMRpOOlCpcMkBPxMUSKOEzqGeJTcVKUrXBsUdQDXutUBFN3-GnMNSlso-",
-            imagerySet: "Aerial",
-          }),
-        }),
+        raster,
       ],
       view,
       //加载瓦片时开启动画效果

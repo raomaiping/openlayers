@@ -7,9 +7,9 @@
 <script setup>
   import warterMark from "@/lib/warterMark";
   import { onMounted } from "vue";
-
+  import { AUTHOR } from "@/constants";
   onMounted(() => {
-    warterMark.set("前端小菜鸟吖 QQ:2582395486");
+    warterMark.set(AUTHOR);
   });
 </script>
 

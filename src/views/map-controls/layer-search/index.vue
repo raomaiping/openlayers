@@ -9,12 +9,14 @@
   import { Tile } from "ol/layer";
   import { XYZ } from "ol/source";
   import { fromLonLat } from "ol/proj";
+  import { ATTRIBUTIONS } from "@/constants";
   const initMap = () => {
     //设置地图容器放置位置
     const container = document.getElementById("map");
     const TiandiMap_vec = new Tile({
       name: "天地图矢量图层",
       source: new XYZ({
+        attributions: ATTRIBUTIONS,
         url: "http://t0.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=3bc6874f2b919aa581635abab7759a3f",
         wrapX: false,
       }),
@@ -22,6 +24,7 @@
     const TiandiMap_img = new Tile({
       name: "天地图影像图层",
       source: new XYZ({
+        attributions: ATTRIBUTIONS,
         url: "http://t0.tianditu.com/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=3bc6874f2b919aa581635abab7759a3f",
         wrapX: false,
       }),

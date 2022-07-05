@@ -11,9 +11,19 @@
   import { Map, View } from "ol";
   import { MousePosition, defaults } from "ol/control";
   import { createStringXY } from "ol/coordinate";
-  import { Tile } from "ol/layer";
-  import BingMaps from "ol/source/BingMaps";
-  console.log(document.getElementById("mouse-position"));
+  import { Tile as TileLayer } from "ol/layer";
+  import { XYZ } from "ol/source";
+  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+
+  const raster = new TileLayer({
+    source: new XYZ({
+      attributions: ATTRIBUTIONS,
+      url:
+        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
+        MAPKEY,
+      maxZoom: 20,
+    }),
+  });
   //实例化鼠标位置控件（MousePosition）
   const mousePositionControl = (id) =>
     new MousePosition({
@@ -35,12 +45,7 @@
       //地图容器中加载的图层
       layers: [
         //加载瓦片图层数据
-        new Tile({
-          source: new BingMaps({
-            key: "AiZrfxUNMRpOOlCpcMkBPxMUSKOEzqGeJTcVKUrXBsUdQDXutUBFN3-GnMNSlso-",
-            imagerySet: "Aerial",
-          }),
-        }),
+        raster,
       ],
       view: new View({
         projection: "EPSG:4326", // 坐标系，有EPSG:4326和EPSG:3 857

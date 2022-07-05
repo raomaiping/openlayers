@@ -4,45 +4,38 @@
 
 <script setup>
   import "ol/ol.css";
-  import { onMounted } from "vue";
   import { Map, View } from "ol";
   import { Tile as TileLayer } from "ol/layer";
-  import { defaults, FullScreen } from "ol/control";
+  import { onMounted } from "vue";
   import { XYZ } from "ol/source";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import { ATTRIBUTIONS } from "@/constants";
 
   const raster = new TileLayer({
+    title: "谷歌地图",
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: "http://mt2.google.cn/vt/lyrs=m@167000000&hl=zh-CN&gl=cn&x={x}&y={y}&z={z}",
       maxZoom: 20,
     }),
   });
-  const initMap = () => {
+
+  onMounted(() => {
     new Map({
-      //初始化map
+      //地图容器div的ID
       target: "map",
       //地图容器中加载的图层
       layers: [
         //加载瓦片图层数据
         raster,
       ],
+      //地图视图设置
       view: new View({
-        projection: "EPSG:4326", // 坐标系，有EPSG:4326和EPSG:3 857
-        center: [0, 0], // 深圳坐标
+        //地图初始中心点
+        center: [0, 0],
         //地图初始显示级别
-        zoom: 5,
+        zoom: 2,
       }),
-      //加载控件到地图容器中
-      controls: defaults().extend([
-        new FullScreen(), //加载全屏显示控件（目前支持非IE内核浏览器）
-      ]),
     });
-  };
-  onMounted(() => {
-    initMap();
   });
 </script>
 

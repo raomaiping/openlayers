@@ -4,45 +4,38 @@
 
 <script setup>
   import "ol/ol.css";
-  import { onMounted } from "vue";
   import { Map, View } from "ol";
-  import { Tile as TileLayer } from "ol/layer";
-  import { defaults, FullScreen } from "ol/control";
   import { XYZ } from "ol/source";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import { Tile as TileLayer } from "ol/layer";
+  import { onMounted } from "vue";
+  import { ATTRIBUTIONS } from "@/constants";
 
   const raster = new TileLayer({
+    name: "天地图影像图层",
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: "http://t0.tianditu.com/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=3bc6874f2b919aa581635abab7759a3f",
       maxZoom: 20,
     }),
   });
-  const initMap = () => {
+
+  onMounted(() => {
     new Map({
-      //初始化map
+      //地图容器div的ID
       target: "map",
       //地图容器中加载的图层
       layers: [
         //加载瓦片图层数据
         raster,
       ],
+      //地图视图设置
       view: new View({
-        projection: "EPSG:4326", // 坐标系，有EPSG:4326和EPSG:3 857
-        center: [0, 0], // 深圳坐标
+        //地图初始中心点
+        center: [0, 0],
         //地图初始显示级别
-        zoom: 5,
+        zoom: 2,
       }),
-      //加载控件到地图容器中
-      controls: defaults().extend([
-        new FullScreen(), //加载全屏显示控件（目前支持非IE内核浏览器）
-      ]),
     });
-  };
-  onMounted(() => {
-    initMap();
   });
 </script>
 

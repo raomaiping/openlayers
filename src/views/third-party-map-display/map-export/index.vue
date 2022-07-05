@@ -1,16 +1,19 @@
 <template>
+  <div id="menu">
+    <el-button type="primary" @click="handleExport">导出地图</el-button>
+  </div>
   <div id="map"></div>
 </template>
 
 <script setup>
   import "ol/ol.css";
-  import { onMounted } from "vue";
+  import { onMounted, ref } from "vue";
   import { Map, View } from "ol";
   import { Tile as TileLayer } from "ol/layer";
-  import { defaults, FullScreen } from "ol/control";
   import { XYZ } from "ol/source";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
-
+  import { MAPKEY, ATTRIBUTIONS, AUTHOR } from "@/constants";
+  import { exportMap } from "@/lib";
+  const map = ref(null);
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
@@ -18,10 +21,12 @@
         "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
         MAPKEY,
       maxZoom: 20,
+      crossOrigin: "anonymous",
     }),
   });
+
   const initMap = () => {
-    new Map({
+    map.value = new Map({
       //初始化map
       target: "map",
       //地图容器中加载的图层
@@ -35,11 +40,11 @@
         //地图初始显示级别
         zoom: 5,
       }),
-      //加载控件到地图容器中
-      controls: defaults().extend([
-        new FullScreen(), //加载全屏显示控件（目前支持非IE内核浏览器）
-      ]),
     });
+  };
+
+  const handleExport = () => {
+    exportMap(map.value, AUTHOR);
   };
   onMounted(() => {
     initMap();
@@ -50,9 +55,15 @@
 <style scoped>
   #map {
     position: absolute;
-    top: 0;
+    top: 50px;
     bottom: 0;
     left: 0;
     right: 0;
+  }
+  #menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
   }
 </style>

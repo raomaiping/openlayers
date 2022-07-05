@@ -16,6 +16,7 @@
   import { Map, View } from "ol";
   import { Tile } from "ol/layer";
   import { XYZ } from "ol/source";
+  import { ATTRIBUTIONS } from "@/constants";
   const checkList = ref([
     "天地图矢量图层",
     "天地图矢量注记图层",
@@ -26,6 +27,7 @@
     new Tile({
       name,
       source: new XYZ({
+        attributions: ATTRIBUTIONS,
         url,
         wrapX: false,
       }),

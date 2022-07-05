@@ -8,7 +8,9 @@
   import { Map, View } from "ol";
   import { Tile } from "ol/layer";
   import { TileArcGISRest } from "ol/source";
+  import { ATTRIBUTIONS } from "@/constants";
   const arcGISSource = new TileArcGISRest({
+    attributions: ATTRIBUTIONS,
     //ArcGIS Rest服务url,url中包括MapServer或ImageServer
     url:
       "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/" +
