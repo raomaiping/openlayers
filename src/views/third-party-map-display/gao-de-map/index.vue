@@ -8,7 +8,7 @@
   import { Tile as TileLayer } from "ol/layer";
   import { onMounted } from "vue";
   import { XYZ } from "ol/source";
-  import { ATTRIBUTIONS, ShenZhen } from "@/constants";
+  import { ATTRIBUTIONS, SHENZHEN } from "@/constants";
 
   const raster = new TileLayer({
     title: "谷歌地图",
@@ -32,7 +32,7 @@
       view: new View({
         //地图初始中心点
         projection: "EPSG:4326", // 坐标系，有EPSG:4326和EPSG:3857
-        center: ShenZhen, // 深圳坐标
+        center: SHENZHEN, // 深圳坐标
         //地图初始显示级别
         zoom: 10,
       }),
