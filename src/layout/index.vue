@@ -73,5 +73,6 @@
   }
   .main {
     position: relative;
+    overflow: hidden;
   }
 </style>
