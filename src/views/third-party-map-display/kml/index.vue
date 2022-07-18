@@ -12,14 +12,12 @@
   import XYZ from "ol/source/XYZ";
   import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
   import { onMounted } from "vue";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import { MAPURL, ATTRIBUTIONS } from "@/constants";
 
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: MAPURL,
       maxZoom: 20,
     }),
   });

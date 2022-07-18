@@ -13,14 +13,12 @@
   import { createStringXY } from "ol/coordinate";
   import { Tile as TileLayer } from "ol/layer";
   import { XYZ } from "ol/source";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import { MAPURL, ATTRIBUTIONS } from "@/constants";
 
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: MAPURL,
       maxZoom: 20,
     }),
   });

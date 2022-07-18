@@ -14,7 +14,7 @@
   import { Style, Fill, Stroke, Circle } from "ol/style";
   import { Select, Modify as ModifyInteraction } from "ol/interaction";
   import { Polygon, Point, LineString } from "ol/geom";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import { MAPURL, ATTRIBUTIONS } from "@/constants";
   //绘制的几何图形要素
   const pointFeature = new Feature(new Point([114.1947, 30.5255]));
   const lineFeature = new Feature(
@@ -60,9 +60,7 @@
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: MAPURL,
       maxZoom: 20,
     }),
   });

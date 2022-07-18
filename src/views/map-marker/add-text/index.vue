@@ -18,7 +18,7 @@
   import { defaults, FullScreen } from "ol/control";
   import { XYZ, Vector as VectorSource } from "ol/source";
   import { Point } from "ol/geom";
-  import { MAPKEY, ATTRIBUTIONS, SHENZHEN } from "@/constants";
+  import { ATTRIBUTIONS, SHENZHEN, MAPURL } from "@/constants";
   import { ElMessage } from "element-plus";
   import { createLabelStyle, addVectorLabel } from "../tools";
 
@@ -30,9 +30,7 @@
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: MAPURL,
       maxZoom: 20,
     }),
   });

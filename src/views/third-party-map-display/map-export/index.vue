@@ -11,15 +11,13 @@
   import { Map, View } from "ol";
   import { Tile as TileLayer } from "ol/layer";
   import { XYZ } from "ol/source";
-  import { MAPKEY, ATTRIBUTIONS, AUTHOR } from "@/constants";
+  import { MAPURL, ATTRIBUTIONS, AUTHOR } from "@/constants";
   import { exportMap } from "@/lib";
   const map = ref(null);
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: MAPURL,
       maxZoom: 20,
       crossOrigin: "anonymous",
     }),

@@ -16,15 +16,13 @@
   import { Tile as TileLayer } from "ol/layer";
   import { fromLonLat } from "ol/proj";
   import { easeIn, easeOut } from "ol/easing";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import { MAPURL, ATTRIBUTIONS } from "@/constants";
   import XYZ from "ol/source/XYZ";
 
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: MAPURL,
       maxZoom: 20,
     }),
   });

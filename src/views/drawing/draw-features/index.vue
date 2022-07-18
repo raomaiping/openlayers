@@ -23,7 +23,7 @@
   import { Draw } from "ol/interaction";
   import { createRegularPolygon } from "ol/interaction/Draw";
   import { Polygon } from "ol/geom";
-  import { MAPKEY, ATTRIBUTIONS } from "@/constants";
+  import { MAPURL, ATTRIBUTIONS } from "@/constants";
   let map = null;
   let draw = null; // 绘制对象
   const state = reactive({
@@ -83,9 +83,7 @@
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
-      url:
-        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" +
-        MAPKEY,
+      url: MAPURL,
       maxZoom: 20,
     }),
   });
