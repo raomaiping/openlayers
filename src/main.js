@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import "default-passive-events";
 import dialogDrag from "@/directives/dialogDrag";
 import router from "./router";
 const app = createApp(App);

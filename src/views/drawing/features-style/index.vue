@@ -1,17 +1,22 @@
 <template>
   <div id="map"></div>
-  <toolBar />
+  <toolBar @handleUpdate="handleUpdate" />
 </template>
 
 <script setup>
+  /*eslint-disable*/
   import "ol/ol.css";
   import { onMounted } from "vue";
   import { Map, View } from "ol";
-  import { Tile as TileLayer } from "ol/layer";
-  import { XYZ } from "ol/source";
+  import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
+  import { XYZ, Vector as VectorSource } from "ol/source";
   import { MAPKEY, ATTRIBUTIONS } from "@/constants";
   import toolBar from "./components/tool-bar.vue";
-
+  import createStyleFunction, {
+    vectorPoints,
+    vectorLines,
+    vectorPolygons,
+  } from "./js/createStyleFunction";
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
@@ -30,16 +35,21 @@
       layers: [
         //加载瓦片图层数据
         raster,
+        vectorPoints,
+        vectorLines,
+        vectorPolygons,
       ],
       view: new View({
-        projection: "EPSG:4326", // 坐标系，有EPSG:4326和EPSG:3 857
-        center: [0, 0], // 深圳坐标
-        //地图初始显示级别
-        zoom: 5,
+        center: [114.2905, 30.5607],
+        projection: "EPSG:4326",
+        minZoom: 2,
+        zoom: 12,
       }),
     });
   };
-
+  const handleUpdate = (type, value) => {
+    createStyleFunction(type, value);
+  };
   onMounted(() => {
     initMap();
   });

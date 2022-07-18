@@ -15,6 +15,7 @@
 
 <style>
   * {
+    touch-action: none;
     margin: 0;
     padding: 0;
   }

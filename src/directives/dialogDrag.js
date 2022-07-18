@@ -1,5 +1,6 @@
 const drag = {
   mounted(el, binding) {
+    const header = el.querySelector(".dialog-drag-header");
     const setStyle = (el) => {
       el.style.cursor = "move";
       el.style.borderStyle = "solid";
@@ -33,9 +34,10 @@ const drag = {
         removeStyle(el);
       };
     };
-    el.addEventListener("mousedown", mousedown, false);
+    header.addEventListener("mousedown", mousedown, { passive: false });
     console.log(el.parentNode, binding.value);
   },
+  unmounted() {},
 };
 
 // 挂载，注册
