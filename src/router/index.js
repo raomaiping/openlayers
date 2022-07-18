@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import layout from "@/layout";
-import MapControls from './routers/map-controls'
+import MapControls from "./routers/map-controls";
 import ThirdPartyMapDisplay from "./routers/third-party-map-display";
-import Drawing from "./routers/drawing"
+import Drawing from "./routers/drawing";
+import MapMarker from "./routers/map-marker";
 
 export const routes = [
   {
@@ -23,7 +24,8 @@ export const routes = [
   },
   MapControls,
   ThirdPartyMapDisplay,
-  Drawing
+  Drawing,
+  MapMarker,
 ];
 
 const router = createRouter({

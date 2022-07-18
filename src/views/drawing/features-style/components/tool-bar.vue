@@ -14,7 +14,7 @@
       </div>
       <div class="tab-content">
         <button @click="handleUpdate">更新</button>
-        <keep-alive>
+        <keep-alive :max="state.max">
           <component :is="state.component" ref="form"></component>
         </keep-alive>
       </div>
@@ -29,6 +29,7 @@
   import line from "./line.vue";
   import polygon from "./polygon.vue";
   const emit = defineEmits(["handleUpdate"]);
+
   const state = reactive({
     tabs: [
       {
@@ -46,6 +47,8 @@
     ],
     active: "point",
     component: null,
+    include: ["point", "line", "polygon"],
+    max: 0,
   });
   const form = ref(null);
   const handleUpdate = () => {
@@ -61,6 +64,8 @@
     state.component = markRaw(lookup[active]);
   };
   handleMenu(state.active);
+  // 设置最大缓存组件数为三个
+  state.max = 3;
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
