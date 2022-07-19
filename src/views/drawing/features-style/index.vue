@@ -4,12 +4,11 @@
 </template>
 
 <script setup>
-  /*eslint-disable*/
   import "ol/ol.css";
   import { onMounted } from "vue";
   import { Map, View } from "ol";
-  import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
-  import { XYZ, Vector as VectorSource } from "ol/source";
+  import { Tile as TileLayer } from "ol/layer";
+  import { XYZ } from "ol/source";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
   import toolBar from "./components/tool-bar.vue";
   import createStyleFunction, {

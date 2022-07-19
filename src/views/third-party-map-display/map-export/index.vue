@@ -11,7 +11,7 @@
   import { Map, View } from "ol";
   import { Tile as TileLayer } from "ol/layer";
   import { XYZ } from "ol/source";
-  import { MAPURL, ATTRIBUTIONS, AUTHOR } from "@/constants";
+  import { MAPURL, ATTRIBUTIONS, AUTHOR_INFO } from "@/constants";
   import { exportMap } from "@/lib";
   const map = ref(null);
   const raster = new TileLayer({
@@ -42,7 +42,8 @@
   };
 
   const handleExport = () => {
-    exportMap(map.value, AUTHOR);
+    const { NAME, QQ, WX } = AUTHOR_INFO;
+    exportMap(map.value, `${NAME} QQ:${QQ} WX:${WX}`);
   };
   onMounted(() => {
     initMap();

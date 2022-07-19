@@ -29,7 +29,11 @@ export const createLabelStyle = (feature) =>
  * @param {ol.source.Vector} vectorSource 矢量标注的数据源
  * @param {String} name 标注名
  */
-export const addVectorLabel = ({ coordinate, vectorSource, name }) => {
+export const addVectorLabel = ({
+  coordinate,
+  vectorSource,
+  name = "标注点",
+}) => {
   //新建一个要素 ol.Feature
   var newFeature = new Feature({
     //几何信息

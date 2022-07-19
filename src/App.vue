@@ -7,9 +7,10 @@
 <script setup>
   import warterMark from "@/lib/warterMark";
   import { onMounted } from "vue";
-  import { AUTHOR } from "@/constants";
+  import { AUTHOR_INFO } from "@/constants";
   onMounted(() => {
-    warterMark.set(AUTHOR);
+    const { NAME, QQ, WX } = AUTHOR_INFO;
+    warterMark.set(`${NAME} QQ:${QQ} WX:${WX}`);
   });
 </script>
 
