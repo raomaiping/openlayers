@@ -1,6 +1,7 @@
 import layout from "@/layout";
 
 export default {
+  icon: "Edit",
   path: "/map-marker",
   meta: { title: "地图标注" },
   component: layout,

@@ -13,7 +13,5 @@ export const AUTHOR_INFO = {
   QQ: 2582395486,
   WX: 15979580504,
   AVATAR: "https://q2.qlogo.cn/headimg_dl?dst_uin=2582395486&spec=100",
-  SKILL: "JavaScript、Css、Html、Vue、React、NodeJS ...",
-  INTEREST: "打游戏",
   LOCATION: "深圳",
 };

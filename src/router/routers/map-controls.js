@@ -1,6 +1,8 @@
 import layout from "@/layout";
+// import { Message } from "@element-plus/icons-vue";
 
 export default {
+  icon: "SetUp",
   path: "/map-controls",
   meta: { title: "地图控件" },
   component: layout,
@@ -9,8 +11,7 @@ export default {
       path: "set-background",
       name: "SetBackground",
       meta: { title: "设置背景" },
-      component: () =>
-        import("@/views/map-controls/set-background"),
+      component: () => import("@/views/map-controls/set-background"),
     },
     {
       path: "navigation",
@@ -34,50 +35,43 @@ export default {
       path: "mouse-position",
       name: "MousePosition",
       meta: { title: "鼠标位置" },
-      component: () =>
-        import("@/views/map-controls/mouse-position"),
+      component: () => import("@/views/map-controls/mouse-position"),
     },
     {
       path: "scale-line",
       name: "ScaleLine",
       meta: { title: "比例尺控件" },
-      component: () =>
-        import("@/views/map-controls/scale-line"),
+      component: () => import("@/views/map-controls/scale-line"),
     },
     {
       path: "overview-map",
       name: "OverviewMap",
       meta: { title: "鹰眼控件" },
-      component: () =>
-        import("@/views/map-controls/overview-map"),
+      component: () => import("@/views/map-controls/overview-map"),
     },
     {
       path: "full-screen",
       name: "FullScreen",
       meta: { title: "全屏显示控件" },
-      component: () =>
-        import("@/views/map-controls/full-screen"),
+      component: () => import("@/views/map-controls/full-screen"),
     },
     {
       path: "layer-search",
       name: "LayerSearch",
       meta: { title: "图层探查" },
-      component: () =>
-        import("@/views/map-controls/layer-search"),
+      component: () => import("@/views/map-controls/layer-search"),
     },
     {
       path: "map-animation",
       name: "MapAnimation",
       meta: { title: "动画效果" },
-      component: () =>
-        import("@/views/map-controls/map-animation"),
+      component: () => import("@/views/map-controls/map-animation"),
     },
     {
       path: "measure",
       name: "Measure",
       meta: { title: "测量" },
-      component: () =>
-        import("@/views/map-controls/measure/index.vue"),
+      component: () => import("@/views/map-controls/measure/index.vue"),
     },
   ],
-}
+};

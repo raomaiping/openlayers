@@ -1,6 +1,7 @@
 import layout from "@/layout";
 
 export default {
+  icon: "Monitor",
   path: "/drawing",
   meta: { title: "图形绘制" },
   component: layout,

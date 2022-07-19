@@ -1,33 +1,37 @@
 export const handleRouter = (router) => {
-  const paths = ['/', '/home']
-  let newRouter = router.filter(item => !paths.includes(item.path)).map(item => {
-    let { path, meta, children } = item
-    return {
-      path,
-      title: meta.title,
-      children: children?.map(childrenItem => ({
-        path: `${path}/${childrenItem.path}`,
-        title: childrenItem.meta.title,
-      })) || []
-    }
-  })
-  return newRouter
-}
+  const paths = ["/", "/home"];
+  let newRouter = router
+    .filter((item) => !paths.includes(item.path))
+    .map((item) => {
+      let { path, meta, children, icon } = item;
+      return {
+        icon,
+        path,
+        title: meta.title,
+        children:
+          children?.map((childrenItem) => ({
+            path: `${path}/${childrenItem.path}`,
+            title: childrenItem.meta.title,
+          })) || [],
+      };
+    });
+  return newRouter;
+};
 
-export const exportMap = (map, filename = 'map.png') => {
-  map.once('rendercomplete', function () {
-    const mapCanvas = document.createElement('canvas');
+export const exportMap = (map, filename = "map.png") => {
+  map.once("rendercomplete", function () {
+    const mapCanvas = document.createElement("canvas");
     const size = map.getSize();
     mapCanvas.width = size[0];
     mapCanvas.height = size[1];
-    const mapContext = mapCanvas.getContext('2d');
+    const mapContext = mapCanvas.getContext("2d");
     Array.prototype.forEach.call(
-      map.getViewport().querySelectorAll('.ol-layer canvas, canvas.ol-layer'),
+      map.getViewport().querySelectorAll(".ol-layer canvas, canvas.ol-layer"),
       (canvas) => {
         if (canvas.width > 0) {
           const opacity =
             canvas.parentNode.style.opacity || canvas.style.opacity;
-          mapContext.globalAlpha = opacity === '' ? 1 : Number(opacity);
+          mapContext.globalAlpha = opacity === "" ? 1 : Number(opacity);
 
           const backgroundColor = canvas.parentNode.style.backgroundColor;
           if (backgroundColor) {
@@ -41,7 +45,7 @@ export const exportMap = (map, filename = 'map.png') => {
             // Get the transform parameters from the style's transform matrix
             matrix = transform
               .match(/^matrix\(([^(]*)\)$/)[1]
-              .split(',')
+              .split(",")
               .map(Number);
           } else {
             matrix = [
@@ -64,10 +68,10 @@ export const exportMap = (map, filename = 'map.png') => {
     );
     mapContext.globalAlpha = 1;
     if (navigator.msSaveBlob) {
-      // 链接下载属性不能在MS浏览器上工作 
+      // 链接下载属性不能在MS浏览器上工作
       navigator.msSaveBlob(mapCanvas.msToBlob(), filename);
     } else {
-      const downloadElement = document.createElement('a');
+      const downloadElement = document.createElement("a");
       downloadElement.href = mapCanvas.toDataURL();
       downloadElement.download = filename;
       document.body.appendChild(downloadElement);
@@ -77,4 +81,4 @@ export const exportMap = (map, filename = 'map.png') => {
     }
   });
   map.renderSync();
-}
+};
