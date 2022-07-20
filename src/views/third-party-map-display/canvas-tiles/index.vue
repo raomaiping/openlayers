@@ -9,6 +9,8 @@
   import { onMounted } from "vue";
   import { XYZ, TileDebug } from "ol/source";
   import { ATTRIBUTIONS, MAPURL } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   //实例化图层数据源对象
   const TiandituSource = new XYZ({
     attributions: ATTRIBUTIONS,
@@ -17,7 +19,7 @@
   });
 
   onMounted(() => {
-    new Map({
+    const map = new Map({
       //地图容器div的ID
       target: "map",
       //地图容器中加载的图层
@@ -44,6 +46,8 @@
         zoom: 8,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

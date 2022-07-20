@@ -1,6 +1,7 @@
 <template>
-  <div id="map"></div>
-  <toolBar @handleUpdate="handleUpdate" />
+  <el-empty description="请在pc端查看" v-if="isMobile()" />
+  <div id="map" v-if="!isMobile()"></div>
+  <toolBar @handleUpdate="handleUpdate" v-if="!isMobile()" />
 </template>
 
 <script setup>
@@ -10,6 +11,7 @@
   import { Tile as TileLayer } from "ol/layer";
   import { XYZ } from "ol/source";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   import toolBar from "./components/tool-bar.vue";
   import createStyleFunction, {
     vectorPoints,
@@ -25,7 +27,7 @@
   });
 
   const initMap = () => {
-    new Map({
+    const map = new Map({
       //初始化map
       target: "map",
       //地图容器中加载的图层
@@ -43,10 +45,13 @@
         zoom: 12,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
   const handleUpdate = (type, value) => {
     createStyleFunction(type, value);
   };
+  const isMobile = () => localStorage.getItem("device") === "mobile";
   onMounted(() => {
     initMap();
   });

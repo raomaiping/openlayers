@@ -14,6 +14,8 @@
   import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style";
   import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
@@ -68,7 +70,8 @@
         zoom: 12,
       }),
     });
-
+    // 侧边栏变化更新地图
+    updateMapSize(map);
     const displayFeatureInfo = function (pixel) {
       const features = [];
       map.forEachFeatureAtPixel(pixel, function (feature) {

@@ -10,6 +10,8 @@
   import { XYZ } from "ol/source";
   import { fromLonLat } from "ol/proj";
   import { ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   const initMap = () => {
     //设置地图容器放置位置
     const container = document.getElementById("map");
@@ -40,7 +42,8 @@
         zoom: 6,
       }),
     });
-
+    // 侧边栏变化更新地图
+    updateMapSize(map);
     //探查半径
     let radius = 75;
     //添加键盘按下事件监听，用来控制探查范围的大小

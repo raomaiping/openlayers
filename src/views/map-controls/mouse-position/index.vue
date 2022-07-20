@@ -14,7 +14,7 @@
   import { Tile as TileLayer } from "ol/layer";
   import { XYZ } from "ol/source";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
-
+  import updateMapSize from "@/hooks/updateMapSize";
   const raster = new TileLayer({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
@@ -37,7 +37,7 @@
       undefinedHTML: "&nbsp;",
     });
   const initMap = (mousePositionControl) => {
-    new Map({
+    const map = new Map({
       //初始化map
       target: "map",
       //地图容器中加载的图层
@@ -61,6 +61,8 @@
         },
       }).extend([mousePositionControl]), //加载鼠标位置控件
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
   onMounted(() => {
     initMap(mousePositionControl("mouse-position"));
@@ -85,5 +87,15 @@
   #mouse-position {
     width: 200px;
     height: 20px;
+  }
+  .mobile #map {
+    top: 0;
+  }
+  .mobile #mouse-position {
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    z-index: 1;
+    color: #fff;
   }
 </style>

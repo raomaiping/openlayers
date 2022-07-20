@@ -5,6 +5,7 @@
     <el-button type="primary" @click="handlePanToSZ">平移到【深圳】</el-button>
     <el-button type="primary" @click="handleRestore">复位</el-button>
   </div>
+
   <div id="map"></div>
 </template>
 
@@ -16,6 +17,7 @@
   import { Tile as TileLayer } from "ol/layer";
   import { XYZ } from "ol/source";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   let map;
   //地图视图的初始参数
   let view;
@@ -71,6 +73,8 @@
     zoom = view.getZoom();
     center = view.getCenter();
     rotation = view.getRotation();
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
 
   // 缩小
@@ -128,5 +132,22 @@
     justify-content: space-around;
     align-items: center;
     height: 50px;
+  }
+  .mobile #map {
+    top: 0;
+  }
+  .mobile .btns {
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .mobile .el-button + .el-button {
+    margin-left: 0;
   }
 </style>

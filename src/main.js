@@ -7,8 +7,8 @@ import dialogDrag from "@/directives/dialogDrag";
 // element icons
 import * as Icons from "@element-plus/icons-vue";
 import router from "./router";
+import "@/style/mobile.css";
 const app = createApp(App);
-
 app.use(ElementPlus);
 app.use(router);
 

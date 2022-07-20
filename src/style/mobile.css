@@ -1,0 +1,12 @@
+.mobile{
+  /* background-color: red; */
+}
+.mobile .el-breadcrumb {
+  display: none;
+}
+.mobile .el-breadcrumb {
+  display: none;
+}
+.mobile .layout-container .el-header{
+  justify-content: flex-end;
+}

@@ -15,6 +15,8 @@
   import { Select, Modify as ModifyInteraction } from "ol/interaction";
   import { Polygon, Point, LineString } from "ol/geom";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   //绘制的几何图形要素
   const pointFeature = new Feature(new Point([114.1947, 30.5255]));
   const lineFeature = new Feature(
@@ -81,6 +83,8 @@
         zoom: 12,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
 
   //定义修改几何图形功能控件
@@ -138,5 +142,8 @@
     height: 50px;
     line-height: 50px;
     text-align: center;
+  }
+  .mobile #menu {
+    font-size: 12px;
   }
 </style>

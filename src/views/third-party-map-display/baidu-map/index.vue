@@ -10,6 +10,8 @@
   import { onMounted } from "vue";
   import { get } from "ol/proj";
   import TileGrid from "ol/tilegrid/TileGrid";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   //坐标参考系
   const projection = get("EPSG:3857");
   //分辨率
@@ -60,7 +62,7 @@
   });
 
   onMounted(() => {
-    new Map({
+    const map = new Map({
       //地图容器div的ID
       target: "map",
       //地图容器中加载的图层
@@ -76,6 +78,8 @@
         zoom: 2,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

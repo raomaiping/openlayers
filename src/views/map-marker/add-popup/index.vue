@@ -21,6 +21,7 @@
   import { XYZ, Vector as VectorSource } from "ol/source";
   import { Point } from "ol/geom";
   import { ATTRIBUTIONS, SHENZHEN, MAPURL } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   import {
     createLabelStyle,
     createPopup,
@@ -55,6 +56,8 @@
         new FullScreen(), //加载全屏显示控件（目前支持非IE内核浏览器）
       ]),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
     //实例化Vector要素，通过矢量图层添加到地图容器中
     const iconFeature = new Feature({
       geometry: new Point(SHENZHEN),

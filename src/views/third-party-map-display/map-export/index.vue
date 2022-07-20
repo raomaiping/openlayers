@@ -13,6 +13,8 @@
   import { XYZ } from "ol/source";
   import { MAPURL, ATTRIBUTIONS, AUTHOR_INFO } from "@/constants";
   import { exportMap } from "@/lib";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   const map = ref(null);
   const raster = new TileLayer({
     source: new XYZ({
@@ -39,6 +41,8 @@
         zoom: 5,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map.value);
   };
 
   const handleExport = () => {

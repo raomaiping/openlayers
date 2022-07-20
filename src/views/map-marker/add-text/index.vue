@@ -2,8 +2,7 @@
   <div id="top">
     <el-input
       v-model="state.input"
-      placeholder="请输入需要添加的文字标注，输入文字后点击地图方可添加文字标注"
-      style="width: 600px"
+      placeholder="输入文字后点击地图方可添加文字标注"
       clearable
     />
   </div>
@@ -21,6 +20,7 @@
   import { ATTRIBUTIONS, SHENZHEN, MAPURL } from "@/constants";
   import { ElMessage } from "element-plus";
   import { createLabelStyle, addVectorLabel } from "./tools";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const state = reactive({
     input: "",
@@ -54,6 +54,8 @@
         new FullScreen(), //加载全屏显示控件（目前支持非IE内核浏览器）
       ]),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(state.map);
     //实例化Vector要素，通过矢量图层添加到地图容器中
     const iconFeature = new Feature({
       geometry: new Point(SHENZHEN),
@@ -107,5 +109,14 @@
     text-align: center;
     height: 50px;
     line-height: 50px;
+  }
+  .el-input {
+    width: 600px;
+  }
+  .mobile #top {
+    font-size: 12px;
+  }
+  .mobile .el-input {
+    width: 300px;
   }
 </style>

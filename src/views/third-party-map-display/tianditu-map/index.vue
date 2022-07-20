@@ -9,6 +9,7 @@
   import { Tile as TileLayer } from "ol/layer";
   import { onMounted } from "vue";
   import { ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const raster = new TileLayer({
     name: "天地图影像图层",
@@ -20,7 +21,7 @@
   });
 
   onMounted(() => {
-    new Map({
+    const map = new Map({
       //地图容器div的ID
       target: "map",
       //地图容器中加载的图层
@@ -37,6 +38,8 @@
         zoom: 12,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

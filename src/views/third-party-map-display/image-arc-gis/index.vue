@@ -9,6 +9,8 @@
   import { Tile } from "ol/layer";
   import { XYZ } from "ol/source";
   import { ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   const arcGISLayers = new Tile({
     source: new XYZ({
       attributions: ATTRIBUTIONS,
@@ -35,6 +37,8 @@
     const map = initMap();
     //添加瓦片地图图层
     map.addLayer(arcGISLayers);
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

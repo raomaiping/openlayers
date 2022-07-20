@@ -14,6 +14,7 @@
   import { defaults, FullScreen } from "ol/control";
   import { XYZ } from "ol/source";
   import { ATTRIBUTIONS, MAPURL } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   import { addClusterLabels, removeClusterLabels, clusters } from "./clusters";
   let map = null;
   const raster = new TileLayer({
@@ -43,6 +44,8 @@
         new FullScreen(), //加载全屏显示控件（目前支持非IE内核浏览器）
       ]),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
   // 添加聚合要素
   const handleAdd = () => {

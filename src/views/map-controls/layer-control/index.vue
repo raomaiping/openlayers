@@ -17,6 +17,7 @@
   import { Tile } from "ol/layer";
   import { XYZ } from "ol/source";
   import { ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   const checkList = ref([
     "天地图矢量图层",
     "天地图矢量注记图层",
@@ -67,6 +68,8 @@
         zoom: 2,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
   const handleSelectLayer = (checkList) => {
     //获取地图中所有图层
@@ -101,5 +104,20 @@
     justify-content: space-around;
     align-items: center;
     height: 50px;
+  }
+  .mobile #map {
+    top: 0;
+  }
+  .mobile .btns {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 300px;
+    justify-content: space-around;
+    align-items: flex-start;
   }
 </style>

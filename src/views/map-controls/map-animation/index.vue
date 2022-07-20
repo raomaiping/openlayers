@@ -18,6 +18,7 @@
   import { easeIn, easeOut } from "ol/easing";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
   import XYZ from "ol/source/XYZ";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const raster = new TileLayer({
     source: new XYZ({
@@ -34,7 +35,7 @@
     zoom: 11,
   });
   const initMap = () => {
-    new Map({
+    const map = new Map({
       //初始化map
       target: "map",
       //地图容器中加载的图层
@@ -46,6 +47,8 @@
       //加载瓦片时开启动画效果
       loadTilesWhileAnimating: true,
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
   //各定位点(中国省会城市)
   const shenyang = fromLonLat([123.24, 41.5]);
@@ -183,5 +186,22 @@
     justify-content: space-around;
     align-items: center;
     height: 50px;
+  }
+  .mobile #map {
+    top: 0;
+  }
+  .mobile .btns {
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .mobile .el-button + .el-button {
+    margin-left: 0;
   }
 </style>

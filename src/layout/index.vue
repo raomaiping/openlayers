@@ -36,8 +36,10 @@
         </el-menu>
       </el-scrollbar>
       <div class="collapse" @click="handleCollapse">
-        <el-icon color="#fff" v-if="!isCollapse"><Fold /></el-icon>
-        <el-icon color="#fff" v-else><Expand /></el-icon>
+        <el-icon color="#fff" v-if="!isCollapse" class="collapse-icon"
+          ><Fold
+        /></el-icon>
+        <el-icon color="#fff" v-else class="collapse-icon"><Expand /></el-icon>
       </div>
     </el-aside>
 
@@ -83,8 +85,9 @@
   import { handleRouter } from "@/lib";
   import { useRouter } from "vue-router";
   import { AUTHOR_INFO } from "@/constants";
-  const isCollapse = ref(false);
+  const isCollapse = ref(true);
   const router = useRouter();
+
   const breadcrumbList = computed(() => {
     const { matched, name } = router.currentRoute.value;
     if (name == "Home") return [];
@@ -94,6 +97,7 @@
   });
   const handleCollapse = () => {
     isCollapse.value = !isCollapse.value;
+    localStorage.setItem("isCollapse", isCollapse.value);
   };
 </script>
 
@@ -153,5 +157,8 @@
     margin-right: 10px;
     color: #fff;
     font-size: 16px;
+  }
+  .collapse-icon {
+    cursor: pointer;
   }
 </style>

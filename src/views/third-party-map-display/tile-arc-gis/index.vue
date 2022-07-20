@@ -9,6 +9,8 @@
   import { Tile } from "ol/layer";
   import { TileArcGISRest } from "ol/source";
   import { ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   const arcGISSource = new TileArcGISRest({
     attributions: ATTRIBUTIONS,
     //ArcGIS Rest服务url,url中包括MapServer或ImageServer
@@ -38,6 +40,8 @@
     const map = initMap();
     //添加瓦片地图图层
     map.addLayer(arcGISLayers);
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

@@ -15,6 +15,7 @@
   import { getCenter } from "ol/extent";
   import duck from "@/assets/yellow_duck.webp";
   import { ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   // 单张图片的矢量图层
   const map = ref(null);
   const initMap = () => {
@@ -31,7 +32,7 @@
         imageExtent: extent,
       }),
     });
-    new Map({
+    const map = new Map({
       //初始化map
       target: "map",
       layers: [imageLayer],
@@ -41,6 +42,8 @@
         zoom: 2,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
   const setBackgroundImage = () => {
     map.value.style.backgroundImage = `url(${duck})`;

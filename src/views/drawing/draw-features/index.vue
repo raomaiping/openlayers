@@ -24,6 +24,8 @@
   import { createRegularPolygon } from "ol/interaction/Draw";
   import { Polygon } from "ol/geom";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
+
   let map = null;
   let draw = null; // 绘制对象
   const state = reactive({
@@ -169,6 +171,8 @@
     map.addLayer(vector);
     //添加交互绘制功能控件
     addInteraction();
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

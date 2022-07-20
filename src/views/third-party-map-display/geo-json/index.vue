@@ -13,6 +13,7 @@
   import { XYZ, Vector as VectorSource } from "ol/source";
   import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const raster = new TileLayer({
     source: new XYZ({
@@ -251,7 +252,7 @@
   });
 
   onMounted(() => {
-    new Map({
+    const map = new Map({
       layers: [raster, vectorLayer],
       target: "map",
       view: new View({
@@ -259,6 +260,8 @@
         zoom: 2,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

@@ -13,6 +13,7 @@
   import { Point } from "ol/geom";
   import { ATTRIBUTIONS, SHENZHEN, MAPURL } from "@/constants";
   import { createLabelStyle, addVectorLabel } from "./tools";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const state = reactive({
     map: null,
@@ -59,6 +60,8 @@
       source: state.vectorSource,
     });
     state.map.addLayer(vectorLayer);
+    // 侧边栏变化更新地图
+    updateMapSize(state.map);
   };
 
   onMounted(() => {

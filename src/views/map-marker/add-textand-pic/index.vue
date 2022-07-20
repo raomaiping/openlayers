@@ -31,6 +31,7 @@
   import { ATTRIBUTIONS, SHENZHEN, MAPURL, NANCHANG } from "@/constants";
   import { ElMessage } from "element-plus";
   import { createLabelStyle, addVectorLabel, addOverlayLabel } from "./tools";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const state = reactive({
     map: null,
@@ -64,6 +65,8 @@
         new FullScreen(), //加载全屏显示控件（目前支持非IE内核浏览器）
       ]),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(state.map);
     //实例化Vector要素，通过矢量图层添加到地图容器中
     const iconFeature = new Feature({
       geometry: new Point(SHENZHEN),
@@ -155,5 +158,11 @@
     font-size: 14px;
     font-weight: bold;
     text-shadow: black 0.1em 0.1em 0.2em;
+  }
+  .mobile #top {
+    height: 100px;
+  }
+  .mobile #map {
+    top: 100px;
   }
 </style>

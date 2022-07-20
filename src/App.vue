@@ -1,13 +1,13 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup>
   import warterMark from "@/lib/warterMark";
   import { onMounted } from "vue";
   import { AUTHOR_INFO } from "@/constants";
+  import ResizeHandler from "@/hooks/ResizeHandler";
+  ResizeHandler();
   onMounted(() => {
     const { NAME, QQ, WX } = AUTHOR_INFO;
     warterMark.set(`${NAME} QQ:${QQ} WX:${WX}`);

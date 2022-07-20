@@ -11,6 +11,7 @@
   import { defaults, OverviewMap } from "ol/control";
   import { XYZ } from "ol/source";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const raster = new TileLayer({
     source: new XYZ({
@@ -20,7 +21,7 @@
     }),
   });
   const initMap = () => {
-    new Map({
+    const map = new Map({
       //初始化map
       target: "map",
       //地图容器中加载的图层
@@ -54,6 +55,8 @@
         }),
       ]),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   };
   onMounted(() => {
     initMap();

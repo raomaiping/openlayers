@@ -13,6 +13,7 @@
   import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
   import { onMounted } from "vue";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const raster = new TileLayer({
     source: new XYZ({
@@ -39,7 +40,8 @@
         zoom: 10,
       }),
     });
-
+    // 侧边栏变化更新地图
+    updateMapSize(map);
     const displayFeatureInfo = (pixel) => {
       const features = [];
 

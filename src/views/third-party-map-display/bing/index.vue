@@ -8,11 +8,12 @@
   import { BingMaps } from "ol/source";
   import { Tile as TileLayer } from "ol/layer";
   import { onMounted } from "vue";
+  import updateMapSize from "@/hooks/updateMapSize";
 
   const key =
     "Q57tupj2UBsQNQdju4xL~xBceblfTd6icjljunbuaCw~AhwA-whmGMsfIpVhslZyknWhFYq-GvWJZqBnqV8Zq1uRlI5YM_qr7_hxvdgnU7nH";
   onMounted(() => {
-    new Map({
+    const map = new Map({
       //地图容器div的ID
       target: "map",
       //地图容器中加载的图层
@@ -30,6 +31,8 @@
         zoom: 2,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(map);
   });
 </script>
 

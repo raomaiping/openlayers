@@ -7,6 +7,7 @@
       placeholder="Select"
       size="small"
       @change="handleChange"
+      class="select"
     >
       <el-option
         v-for="item in state.options"
@@ -32,6 +33,7 @@
   import { Polygon, LineString } from "ol/geom";
   import { unByKey } from "ol/Observable";
   import { MAPURL, ATTRIBUTIONS } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   import XYZ from "ol/source/XYZ";
   import {
     createHelpTooltip,
@@ -98,6 +100,8 @@
         zoom: 5,
       }),
     });
+    // 侧边栏变化更新地图
+    updateMapSize(state.map);
   };
 
   // 加载测量的绘制矢量层
@@ -282,5 +286,13 @@
 
   ::v-deep .tooltip-static:before {
     border-top-color: #ffcc33;
+  }
+  .mobile #menu {
+    width: 310px;
+    font-size: 14px;
+    bottom: 40px;
+  }
+  .mobile .select {
+    width: 80px;
   }
 </style>
