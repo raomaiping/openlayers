@@ -37,5 +37,11 @@ export default {
       component: () =>
         import("@/views/map-marker/add-cluster-labels/index.vue"),
     },
+    {
+      path: "street-marked",
+      name: "StreetMarked",
+      meta: { title: "街道标注" },
+      component: () => import("@/views/map-marker/street-marked/index.vue"),
+    },
   ],
 };
