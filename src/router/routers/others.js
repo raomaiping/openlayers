@@ -25,5 +25,11 @@ export default {
       meta: { title: "热力图" },
       component: () => import("@/views/others/heatmap/index.vue"),
     },
+    {
+      path: "trajectory-tracking",
+      name: "TrajectoryTracking",
+      meta: { title: "轨迹跟踪" },
+      component: () => import("@/views/others/trajectory-tracking/index.vue"),
+    },
   ],
 };
