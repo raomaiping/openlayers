@@ -73,5 +73,11 @@ export default {
       meta: { title: "测量" },
       component: () => import("@/views/map-controls/measure/index.vue"),
     },
+    {
+      path: "custom-control",
+      name: "CustomControl",
+      meta: { title: "自定义控件" },
+      component: () => import("@/views/map-controls/custom-control/index.vue"),
+    },
   ],
 };
