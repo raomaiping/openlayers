@@ -4,6 +4,7 @@ import MapControls from "./routers/map-controls";
 import ThirdPartyMapDisplay from "./routers/third-party-map-display";
 import Drawing from "./routers/drawing";
 import MapMarker from "./routers/map-marker";
+import Others from "./routers/others";
 import { AUTHOR_INFO } from "@/constants";
 
 export const routes = [
@@ -28,6 +29,7 @@ export const routes = [
   ThirdPartyMapDisplay,
   Drawing,
   MapMarker,
+  Others,
 ];
 
 const router = createRouter({

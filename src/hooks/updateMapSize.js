@@ -4,7 +4,7 @@ import { onBeforeUnmount } from "vue";
  * 监听侧边栏，侧边栏发生变化更新地图
  * @param {ol.Map} map 地图实例
  */
-export default (map) => {
+export default (...map) => {
   // 选择需要观察变动的节点
   const targetNode = document.querySelector(
     ".el-aside .menu .el-scrollbar__view"
@@ -21,7 +21,10 @@ export default (map) => {
         mutation.type === "attributes" &&
         mutation.attributeName === "style"
       ) {
-        map.updateSize();
+        for (let i = 0; i < map.length; i++) {
+          map[i].updateSize();
+        }
+
         // console.log("这个 " + mutation.attributeName + " 属性被修改。");
       }
     }
