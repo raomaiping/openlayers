@@ -37,5 +37,11 @@ export default {
       meta: { title: "箭头动画" },
       component: () => import("@/views/others/arrow-animation/index.vue"),
     },
+    {
+      path: "water-wave-animation",
+      name: "WaterWaveAnimation",
+      meta: { title: "水纹动画" },
+      component: () => import("@/views/others/water-wave-animation/index.vue"),
+    },
   ],
 };
