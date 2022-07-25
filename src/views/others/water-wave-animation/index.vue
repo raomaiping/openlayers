@@ -45,18 +45,11 @@
       }),
     });
 
-    function addRandomFeature() {
-      const geom = new Point(SHENZHEN);
-      const feature = new Feature(geom);
-      source.addFeature(feature);
-    }
-
     const duration = 3000;
     function flash(feature) {
       let start = Date.now();
       const flashGeom = feature.getGeometry().clone();
       tileLayer.on("postrender", animate);
-
       function animate(event) {
         const frameState = event.frameState;
         const elapsed = frameState.time - start;
@@ -85,11 +78,11 @@
       }
     }
 
-    source.on("addfeature", function (e) {
-      flash(e.feature);
-    });
     //第一种方式添加水纹动画
-    addRandomFeature();
+    const geom = new Point(SHENZHEN);
+    const feature = new Feature(geom);
+    source.addFeature(feature);
+    flash(feature);
     //添加打工点
     addVectorLabel({
       coordinate: SHENZHEN,
