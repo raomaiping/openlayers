@@ -14,7 +14,8 @@
   import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
   import { easeOut } from "ol/easing";
   import { getVectorContext } from "ol/render";
-  import { ATTRIBUTIONS, MAPURL, SHENZHEN, NANCHANG } from "@/constants";
+  import { ATTRIBUTIONS, MAPURL, SHENZHEN, FUZHOU } from "@/constants";
+  import { addVectorLabel } from "./tools";
 
   const initMap = () => {
     const tileLayer = new TileLayer({
@@ -89,6 +90,12 @@
     });
     //第一种方式添加水纹动画
     addRandomFeature();
+    //添加打工点
+    addVectorLabel({
+      coordinate: SHENZHEN,
+      vectorSource: source,
+      name: "打工点",
+    });
 
     //第二种方式添加水纹动画
     const element = document.createElement("div");
@@ -102,7 +109,13 @@
       positioning: "center-center",
     });
     map.addOverlay(point_overlay);
-    point_overlay.setPosition(NANCHANG);
+    point_overlay.setPosition(FUZHOU);
+    //添加家
+    addVectorLabel({
+      coordinate: FUZHOU,
+      vectorSource: source,
+      name: "家",
+    });
   };
   onMounted(() => {
     initMap();
