@@ -19,13 +19,13 @@
   import { Map, View, Feature } from "ol";
   import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
   import { defaults, FullScreen } from "ol/control";
-  import { OSM, Vector as VectorSource } from "ol/source";
+  import { XYZ, Vector as VectorSource } from "ol/source";
   import { Polyline } from "ol/format";
   import { Point } from "ol/geom";
   import { getVectorContext } from "ol/render";
   import { Style, Stroke, Icon, Text, Fill } from "ol/style";
   import { VideoPlay, VideoPause } from "@element-plus/icons-vue";
-  import { ATTRIBUTIONS } from "@/constants";
+  import { ATTRIBUTIONS, MAPURL } from "@/constants";
   import updateMapSize from "@/hooks/updateMapSize";
   const state = reactive({
     speed: 100,
@@ -44,8 +44,11 @@
         //加载瓦片图层数据
         new TileLayer({
           name: "OSM",
-          source: new OSM(),
-          attributions: ATTRIBUTIONS,
+          source: new XYZ({
+            attributions: ATTRIBUTIONS,
+            url: MAPURL,
+            maxZoom: 20,
+          }),
         }),
       ],
       view: new View({

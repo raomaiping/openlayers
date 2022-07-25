@@ -11,7 +11,7 @@
   import { get } from "ol/proj";
   import TileGrid from "ol/tilegrid/TileGrid";
   import updateMapSize from "@/hooks/updateMapSize";
-
+  import { ATTRIBUTIONS } from "@/constants";
   //坐标参考系
   const projection = get("EPSG:3857");
   //分辨率
@@ -30,6 +30,7 @@
     projection: projection,
     //设置分辨率
     tileGrid: tilegrid,
+    attributions: ATTRIBUTIONS,
     //出图基地址
     tileUrlFunction: (tileCoord) => {
       if (!tileCoord) {
