@@ -15,6 +15,7 @@
   import { easeOut } from "ol/easing";
   import { getVectorContext } from "ol/render";
   import { ATTRIBUTIONS, MAPURL, SHENZHEN, FUZHOU } from "@/constants";
+  import updateMapSize from "@/hooks/updateMapSize";
   import { addVectorLabel } from "./tools";
 
   const initMap = () => {
@@ -44,7 +45,7 @@
         multiWorld: true,
       }),
     });
-
+    updateMapSize(map);
     const duration = 3000;
     function flash(feature) {
       let start = Date.now();

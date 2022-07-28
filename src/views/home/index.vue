@@ -8,7 +8,7 @@
     <div>毕业于：{{ AUTHOR_INFO.SCHOOL }}</div>
     <div>WX：{{ AUTHOR_INFO.WX }}</div>
     <div>QQ：{{ AUTHOR_INFO.QQ }}</div>
-    <div>
+    <div v-if="IS_JOB_SEARCH">
       简历：<span
         class="resume"
         @click="
@@ -22,12 +22,16 @@
       <a :href="AUTHOR_INFO.JUEJIN" target="_blank">掘金</a>、
       <a :href="AUTHOR_INFO.GITHB" target="_blank">GitHb</a>
     </div>
-    <div>简介：{{ AUTHOR_INFO.DESCRIPTION }}</div>
+    <div>
+      简介：{{
+        IS_JOB_SEARCH ? AUTHOR_INFO.JOB_DESCRIPTION : AUTHOR_INFO.DESCRIPTION
+      }}
+    </div>
   </div>
 </template>
 
 <script setup>
-  import { AUTHOR_INFO } from "@/constants";
+  import { AUTHOR_INFO, IS_JOB_SEARCH } from "@/constants";
   import { downloadFile } from "@/lib";
 </script>
 

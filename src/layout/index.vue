@@ -61,9 +61,7 @@
               <el-dropdown-menu>
                 <el-dropdown-item
                   ><el-icon><Link /></el-icon>
-                  <a
-                    href="https://github.com/raomaiping/openlayers"
-                    target="_blank"
+                  <a :href="AUTHOR_INFO.GITHB" target="_blank"
                     >GitHb</a
                   ></el-dropdown-item
                 >

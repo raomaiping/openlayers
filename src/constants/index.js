@@ -17,10 +17,12 @@ export const AUTHOR_INFO = {
   LOCATION: "深圳",
   SCHOOL: "江西工程职业技术学院",
   GITHB: "https://github.com/raomaiping",
-  DESCRIPTION:
+  DESCRIPTION: "一个练习时长有3年多的前端小菜鸟",
+  JOB_DESCRIPTION:
     "目前就职于深圳市虹川科技有限公司，期望寻求一份前端工程师的工作。",
   RESUME: {
     URL: "https://raomaiping.host/%E9%A5%B6%E8%BF%88%E5%B9%B3-%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88-3%E5%B9%B4.pdf",
     FILENAME: "饶迈平-前端工程师-3年.pdf",
   },
+  IS_JOB_SEARCH: false, // 是否开始找工作
 };
