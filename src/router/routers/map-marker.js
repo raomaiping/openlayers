@@ -43,5 +43,11 @@ export default {
       meta: { title: "街道标注" },
       component: () => import("@/views/map-marker/street-marked/index.vue"),
     },
+    {
+      path: "drag-to-add-mulch",
+      name: "DragToAddMulch",
+      meta: { title: "拖拽添加覆盖物" },
+      component: () => import("@/views/map-marker/drag-to-add-mulch/index.vue"),
+    },
   ],
 };
