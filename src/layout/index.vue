@@ -107,7 +107,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .layout-container .el-header {
     position: relative;
     background-color: #303133;
@@ -162,13 +162,13 @@
     height: calc(100% - 120px);
     color: #fff;
   }
-  .el-menu-vertical:not(.el-menu--collapse) {
+  ::v-deep .el-menu-vertical:not(.el-menu--collapse) {
     width: 200px;
   }
-  .el-breadcrumb__item:last-child .el-breadcrumb__inner,
-  .el-breadcrumb__inner,
-  .el-breadcrumb__inner a,
-  .el-breadcrumb__inner.is-link {
+  ::v-deep .el-breadcrumb__item:last-child .el-breadcrumb__inner,
+  ::v-deep .el-breadcrumb__inner,
+  ::v-deep .el-breadcrumb__inner a,
+  ::v-deep .el-breadcrumb__inner.is-link {
     color: #fff;
   }
   .user {
