@@ -1,6 +1,9 @@
 <template>
   <el-container class="layout-container" style="height: 100%">
     <el-aside>
+      <div class="logo-container" @click="handleClick">
+        <img :src="logo" alt="" /> <span v-show="!isCollapse"> OpenLayers</span>
+      </div>
       <el-scrollbar class="menu">
         <el-menu
           active-text-color="#ffd04b"
@@ -83,6 +86,7 @@
   import { handleRouter } from "@/lib";
   import { useRouter } from "vue-router";
   import { AUTHOR_INFO } from "@/constants";
+  import logo from "@/assets/logo.png";
   const isCollapse = ref(true);
   const router = useRouter();
 
@@ -96,6 +100,10 @@
   const handleCollapse = () => {
     isCollapse.value = !isCollapse.value;
     localStorage.setItem("isCollapse", isCollapse.value);
+  };
+
+  const handleClick = () => {
+    window.open("https://openlayers.org/");
   };
 </script>
 
@@ -129,13 +137,29 @@
     position: relative;
     overflow: hidden;
   }
+
+  .logo-container,
   .collapse {
     height: 60px;
     text-align: center;
     line-height: 60px;
   }
+  .logo-container {
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .logo-container img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
   .menu {
-    height: calc(100% - 60px);
+    height: calc(100% - 120px);
     color: #fff;
   }
   .el-menu-vertical:not(.el-menu--collapse) {
