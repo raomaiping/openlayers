@@ -31,43 +31,43 @@
 </template>
 
 <script setup>
-  import { AUTHOR_INFO, IS_JOB_SEARCH } from "@/constants";
-  import { downloadFile } from "@/lib";
+import { AUTHOR_INFO, IS_JOB_SEARCH } from '@/constants'
+import { downloadFile } from '@/lib'
 </script>
 
 <style scoped>
-  .home {
-    width: 100%;
-    height: 100%;
-    background: url("~@/assets/home.jpg") no-repeat center center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 16px;
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
-  .name {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  .home div {
-    margin: 10px 0;
-  }
-  .resume {
-    cursor: pointer;
-  }
-  a {
-    color: #fff;
-  }
-  a:hover,
-  .resume:hover {
-    color: #409eff;
-  }
-  .mobile a,
-  .mobile .resume {
-    color: #409eff;
-  }
+.home {
+  width: 100%;
+  height: 100%;
+  background: url('~@/assets/home.jpg') no-repeat center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.home div {
+  margin: 10px 0;
+}
+.resume {
+  cursor: pointer;
+}
+a {
+  color: #fff;
+}
+a:hover,
+.resume:hover {
+  color: #409eff;
+}
+.mobile a,
+.mobile .resume {
+  color: #409eff;
+}
 </style>

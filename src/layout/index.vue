@@ -68,6 +68,12 @@
                     >GitHb</a
                   ></el-dropdown-item
                 >
+                <el-dropdown-item
+                  ><el-icon><Link /></el-icon>
+                  <a :href="AUTHOR_INFO.DOCUMENT" target="_blank"
+                    >地图文档</a
+                  ></el-dropdown-item
+                >
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -81,106 +87,106 @@
 </template>
 
 <script setup>
-  import { ref, computed } from "vue";
-  import { routes } from "@/router";
-  import { handleRouter } from "@/lib";
-  import { useRouter } from "vue-router";
-  import { AUTHOR_INFO } from "@/constants";
-  import logo from "@/assets/logo.png";
-  const isCollapse = ref(true);
-  const router = useRouter();
+import { ref, computed } from 'vue'
+import { routes } from '@/router'
+import { handleRouter } from '@/lib'
+import { useRouter } from 'vue-router'
+import { AUTHOR_INFO } from '@/constants'
+import logo from '@/assets/logo.png'
+const isCollapse = ref(true)
+const router = useRouter()
 
-  const breadcrumbList = computed(() => {
-    const { matched, name } = router.currentRoute.value;
-    if (name == "Home") return [];
-    return matched.map((item) => ({
-      name: item.meta.title,
-    }));
-  });
-  const handleCollapse = () => {
-    isCollapse.value = !isCollapse.value;
-    localStorage.setItem("isCollapse", isCollapse.value);
-  };
+const breadcrumbList = computed(() => {
+  const { matched, name } = router.currentRoute.value
+  if (name == 'Home') return []
+  return matched.map((item) => ({
+    name: item.meta.title,
+  }))
+})
+const handleCollapse = () => {
+  isCollapse.value = !isCollapse.value
+  localStorage.setItem('isCollapse', isCollapse.value)
+}
 
-  const handleClick = () => {
-    window.open("https://openlayers.org/");
-  };
+const handleClick = () => {
+  window.open('https://openlayers.org/')
+}
 </script>
 
 <style scoped>
-  .layout-container .el-header {
-    position: relative;
-    background-color: #303133;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .layout-container .el-aside {
-    width: auto;
-    background: #303133;
-    color: #fff;
-  }
-  .layout-container .el-menu {
-    border-right: none;
-  }
-  .layout-container .el-main {
-    padding: 0;
-  }
-  .layout-container .toolbar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    right: 20px;
-  }
-  .main {
-    position: relative;
-    overflow: hidden;
-  }
+.layout-container .el-header {
+  position: relative;
+  background-color: #303133;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.layout-container .el-aside {
+  width: auto;
+  background: #303133;
+  color: #fff;
+}
+.layout-container .el-menu {
+  border-right: none;
+}
+.layout-container .el-main {
+  padding: 0;
+}
+.layout-container .toolbar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  right: 20px;
+}
+.main {
+  position: relative;
+  overflow: hidden;
+}
 
-  .logo-container,
-  .collapse {
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-  }
-  .logo-container {
-    padding: 0 10px;
-    box-sizing: border-box;
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-  }
+.logo-container,
+.collapse {
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+}
+.logo-container {
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
 
-  .logo-container img {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-  }
-  .menu {
-    height: calc(100% - 120px);
-    color: #fff;
-  }
-  ::v-deep .el-menu-vertical:not(.el-menu--collapse) {
-    width: 200px;
-  }
-  ::v-deep .el-breadcrumb__item:last-child .el-breadcrumb__inner,
-  ::v-deep .el-breadcrumb__inner,
-  ::v-deep .el-breadcrumb__inner a,
-  ::v-deep .el-breadcrumb__inner.is-link {
-    color: #fff;
-  }
-  .user {
-    width: 150px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 10px;
-    color: #fff;
-    font-size: 16px;
-  }
-  .collapse-icon {
-    cursor: pointer;
-  }
+.logo-container img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.menu {
+  height: calc(100% - 120px);
+  color: #fff;
+}
+:deep(.el-menu-vertical:not(.el-menu--collapse)) {
+  width: 200px;
+}
+:deep(.el-breadcrumb__item:last-child .el-breadcrumb__inner),
+:deep(.el-breadcrumb__inner),
+:deep(.el-breadcrumb__inner a),
+:deep(.el-breadcrumb__inner.is-link) {
+  color: #fff;
+}
+.user {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+.collapse-icon {
+  cursor: pointer;
+}
 </style>
