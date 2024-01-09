@@ -25,4 +25,4 @@ export const AUTHOR_INFO = {
     FILENAME: '饶迈平-前端工程师-3年.pdf',
   },
 }
-export const IS_JOB_SEARCH = true // 是否开始找工作
+export const IS_JOB_SEARCH = false // 是否开始找工作
