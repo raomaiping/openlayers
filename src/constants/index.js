@@ -5,6 +5,7 @@ export const ATTRIBUTIONS =
 export const SHENZHEN = [114.064839, 22.548857] // 深圳坐标
 export const NANCHANG = [115.892151, 28.676493] // 南昌市
 export const FUZHOU = [116.358351, 27.98385] // 抚州市
+
 // 作者信息
 export const AUTHOR_INFO = {
   NAME: '前端小菜鸟吖',
@@ -18,7 +19,9 @@ export const AUTHOR_INFO = {
   SCHOOL: '江西工程职业技术学院',
   GITHB: 'https://github.com/raomaiping',
   DOCUMENT: 'http://map.raomaiping.host/',
-  DESCRIPTION: '一个练习时长有3年多的前端小菜鸟',
+  DESCRIPTION: `一个练习时长有${
+    new Date().getFullYear() - 2019
+  }年多的前端小菜鸟`,
   JOB_DESCRIPTION: '目前已经离职，期望寻求一份前端工程师的工作。',
   RESUME: {
     URL: 'https://raomaiping.host/%E9%A5%B6%E8%BF%88%E5%B9%B3-%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88-3%E5%B9%B4.pdf',
